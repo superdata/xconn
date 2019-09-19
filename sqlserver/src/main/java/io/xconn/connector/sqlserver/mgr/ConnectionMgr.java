@@ -13,9 +13,19 @@ import com.zaxxer.hikari.HikariDataSource;
 import io.xconn.connector.constant.DBType;
 import io.xconn.connector.param.ConnectionParam;
 
-class ConnectionMgr 
+public class ConnectionMgr 
 {
 	private static Map<String, HikariDataSource> dsCache = new HashMap<>();
+	
+	private ConnectionMgr()
+	{
+		
+	}
+	
+	public static ConnectionMgr getInstance()
+	{
+		return new ConnectionMgr();
+	}
 	
 	public Connection getConnection(DBType dbType, ConnectionParam connectionParam) throws SQLException
 	{
